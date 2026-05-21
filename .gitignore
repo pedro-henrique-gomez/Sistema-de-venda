@@ -66,3 +66,4 @@ frontend/.cache/
 # Lock files (optional - uncomment if you want version control)
 # package-lock.json
 # yarn.lock
+.vercel

@@ -1,0 +1,25 @@
+{
+  "name": "banca-no-ponto-desktop",
+  "version": "1.0.0",
+  "description": "Sistema de vendas Banca no Ponto - Aplicativo Desktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "pack": "electron-packager . BancaNoPonto --platform=win32 --arch=x64 --out=dist --overwrite",
+    "create-installer": "node create-installer.js"
+  },
+  "keywords": [
+    "banca",
+    "vendas",
+    "desktop",
+    "electron"
+  ],
+  "author": "Banca no Ponto",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^25.9.0",
+    "electron-packager": "^17.1.1"
+  },
+  "dependencies": {}
+}
