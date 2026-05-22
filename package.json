@@ -7,7 +7,7 @@
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm start",
-    "build": "npm run build:frontend",
+    "build": "cd frontend && npm install && npm run build",
     "build:desktop": "node build-desktop.js",
     "build:frontend": "cd frontend && npm run build",
     "build:electron": "cd electron && npm run build",
@@ -16,7 +16,8 @@
     "build:linux": "cd electron && npm run build-linux",
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../electron && npm install",
     "postinstall": "cd backend && npx prisma generate",
-    "clean": "rimraf electron/dist frontend/build node_modules backend/node_modules frontend/node_modules electron/node_modules"
+    "clean": "rimraf electron/dist frontend/build node_modules backend/node_modules frontend/node_modules electron/node_modules",
+    "deploy": "node deploy.js"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
