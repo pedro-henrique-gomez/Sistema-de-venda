@@ -1,38 +1,31 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": {
-        "zeroConfig": true
-      }
+  "buildCommand": "./vercel-build.sh",
+  "outputDirectory": "frontend/build",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "backend/api/index.js": {
+      "runtime": "nodejs18.x"
     }
-  ],
+  },
   "routes": [
     {
-      "src": "^/api(/.*)?$",
-      "dest": "/backend/api/index.js"
+      "src": "/api/(.*)",
+      "dest": "backend/api/index.js"
     },
     {
-      "src": "^/static/(.*)",
-      "dest": "/frontend/build/static/$1"
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
     },
     {
-      "src": "^/favicon.ico$",
-      "dest": "/frontend/build/favicon.ico"
+      "src": "/(.*\\..*)",
+      "dest": "/$1"
     },
     {
-      "src": "^/asset-manifest.json$",
-      "dest": "/frontend/build/asset-manifest.json"
-    },
-    {
-      "src": "^/manifest.json$",
-      "dest": "/frontend/build/manifest.json"
-    },
-    {
-      "src": "^/(.*)$",
-      "dest": "/frontend/build/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
