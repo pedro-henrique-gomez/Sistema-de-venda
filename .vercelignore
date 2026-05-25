@@ -1,0 +1,30 @@
+# Ignore local dependency folders and large build artifacts
+node_modules
+backend/node_modules
+frontend/node_modules
+
+# Ignore desktop, electron, and other irrelevant files for Vercel
+desktop-app
+electron
+dist
+banca-no-ponto-extract
+.vscode
+.sixth
+.git
+.gitignore
+README_DESKTOP.md
+README_INICIO.md
+TODO.md
+package-lock.json
+
+# Ignore environment and local database files
+*.env
+*.env.*
+*.db
+*.bak
+*.log
+*.zip
+
+# Ignore OS files
+.DS_Store
+Thumbs.db

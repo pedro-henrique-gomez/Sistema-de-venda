@@ -1,0 +1,101 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║     ✅ CREDENCIAIS PRONTAS - COPIE E COLE NO VERCEL ✅                 ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 INSTRUÇÕES RÁPIDAS
+═════════════════════════════════════════════════════════════════════════════
+
+1. Acesse: https://vercel.com/dashboard
+
+2. Clique: banca-no-ponto
+
+3. Vá para: Settings → Environment Variables
+
+4. Copie e COLE exatamente as 3 variáveis abaixo:
+
+
+📋 VARIÁVEL 1 - COPIE E COLE
+═════════════════════════════════════════════════════════════════════════════
+
+KEY:
+DATABASE_URL
+
+VALUE:
+postgresql://postgres.uhwtcqjhircrgmhfzcbt:Niteroi2004@aws-1-us-west-2.pooler.supabase.com:6543/postgres?pgbouncer=true
+
+Clique: Save
+
+
+📋 VARIÁVEL 2 - COPIE E COLE
+═════════════════════════════════════════════════════════════════════════════
+
+KEY:
+DIRECT_URL
+
+VALUE:
+postgresql://postgres.uhwtcqjhircrgmhfzcbt:Niteroi2004@aws-1-us-west-2.pooler.supabase.com:5432/postgres
+
+Clique: Save
+
+
+📋 VARIÁVEL 3 - GERE UMA CHAVE SEGURA
+═════════════════════════════════════════════════════════════════════════════
+
+KEY:
+JWT_SECRET
+
+VALUE:
+Visite: https://generate-random.org/
+
+Ou use uma destas (escolha uma):
+
+Opção 1:
+abc123xyz789def456ghi789jkl012mno345pqr678tuv901wxyz234abc567def890ghi123
+
+Opção 2:
+8f4c2e1a9b7d3f6e5c8a2b9d4f1e7a3c6b9e2d5f8a1c4e7a0d3f6b9c2e5a8d1f4e7a0
+
+Opção 3:
+super-secret-key-banca-niteroi-2026-production-final-xyz
+
+Clique: Save
+
+
+✅ APÓS SALVAR AS 3 VARIÁVEIS
+═════════════════════════════════════════════════════════════════════════════
+
+1. Vá para: Deployments
+
+2. Clique: No deployment mais recente (🟢 verde)
+
+3. Clique: "Redeploy"
+
+4. Aguarde: 5-10 minutos
+
+5. Status fica 🟢 novamente = SUCESSO!
+
+
+🎉 RESULTADO FINAL
+═════════════════════════════════════════════════════════════════════════════
+
+Seu app estará ONLINE em:
+https://seu-projeto.vercel.app
+
+Com:
+✅ Frontend funcionando
+✅ Backend funcionando
+✅ Banco de dados conectado
+✅ API /vendas respondendo 200
+✅ TUDO 100% operacional
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+⏱️ Tempo: ~15 minutos para terminar tudo
+
+🚀 FAÇ A ISSO AGORA NO VERCEL DASHBOARD!
+
+═════════════════════════════════════════════════════════════════════════════

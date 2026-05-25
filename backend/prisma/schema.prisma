@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Observação: para evitar validar sem DATABASE_URL no ambiente local,
+// configure DATABASE_URL no .env antes de rodar prisma CLI.
+
+
+
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  senha     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  vendas Venda[]
+}
+
+model Produto {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  descricao   String?
+  preco       Float
+  estoque     Int      @default(0)
+  codigoBarras String? @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  fornecedorId Int?
+  fornecedor   Fornecedor? @relation(fields: [fornecedorId], references: [id])
+  
+  itensVenda ItemVenda[]
+  movimentacoes Movimentacao[]
+}
+
+model Fornecedor {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  cnpj      String?  @unique
+  telefone  String?
+  email     String?
+  endereco  String?
+  porcentagem Float?  @default(0) // Porcentagem por venda (consignação)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  produtos Produto[]
+}
+
+model Venda {
+  id             Int      @id @default(autoincrement())
+  total          Float
+  desconto       Float    @default(0)
+  finalizado     Boolean  @default(false)
+  formaPagamento String?
+  lucro          Float?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  itens     ItemVenda[]
+  taxas     Taxa[]
+}
+
+model ItemVenda {
+  id        Int @id @default(autoincrement())
+  quantidade Int
+  preco     Float
+  createdAt DateTime @default(now())
+  
+  vendaId   Int
+  venda     Venda @relation(fields: [vendaId], references: [id])
+  
+  produtoId Int
+  produto   Produto @relation(fields: [produtoId], references: [id])
+}
+
+model Movimentacao {
+  id        Int      @id @default(autoincrement())
+  tipo      String // 'entrada' ou 'saida'
+  quantidade Int
+  motivo    String?
+  createdAt DateTime @default(now())
+  
+  produtoId Int
+  produto   Produto @relation(fields: [produtoId], references: [id])
+}
+
+model Taxa {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  valor     Float
+  createdAt DateTime @default(now())
+  
+  vendaId   Int
+  venda     Venda @relation(fields: [vendaId], references: [id])
+}
