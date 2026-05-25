@@ -6,11 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  // Obrigatório setar no Vercel: DATABASE_URL (connection pooling)
-  // Para desenvolvimento e migrações diretas use DIRECT_URL.
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 // Observação: para evitar validar sem DATABASE_URL no ambiente local,
