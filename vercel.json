@@ -1,31 +1,19 @@
 {
   "version": 2,
-  "buildCommand": "./vercel-build.sh",
-  "outputDirectory": "frontend/build",
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "functions": {
-    "backend/api/index.js": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "backend/api/index.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": "backend/**",
+        "excludeFiles": "backend/node_modules/**"
+      }
     }
-  },
+  ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "backend/api/index.js"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/(.*\\..*)",
-      "dest": "/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "backend/api/index.js"
     }
   ]
 }
