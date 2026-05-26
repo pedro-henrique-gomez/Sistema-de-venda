@@ -1,12 +1,13 @@
 {
   "version": 2,
+  "buildCommand": "cd frontend && npm ci && npm run build",
   "builds": [
     {
       "src": "backend/api/index.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "backend/**",
-        "excludeFiles": "backend/node_modules/**"
+        "includeFiles": "{backend/**,frontend/build/**}",
+        "excludeFiles": "{backend/node_modules/**,frontend/node_modules/**}"
       }
     }
   ],
