@@ -74,6 +74,40 @@ app.use('/api/fornecedores', fornecedoresRoutes);
 app.use('/api/movimentacoes', movimentacoesRoutes);
 app.use('/api/taxas', taxasRoutes);
 
+// Servir frontend estático (ANTES do notFoundHandler)
+const path = require('path');
+const fs = require('fs');
+const frontendBuildPath = path.join(__dirname, '../../frontend/build');
+
+// Servir arquivos estáticos (JS, CSS, imagens, etc)
+app.use(express.static(frontendBuildPath, {
+  maxAge: '1d',
+  etag: false,
+  index: false  // Não servir index.html automaticamente
+}));
+
+// Rota catch-all para SPA: Redireciona para index.html para que React Router funcione
+app.get('*', (req, res) => {
+  const indexPath = path.join(frontendBuildPath, 'index.html');
+  
+  try {
+    if (fs.existsSync(indexPath)) {
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.sendFile(indexPath);
+    } else {
+      console.warn('⚠️ Frontend build not found at:', frontendBuildPath);
+      // Se frontend não existe, retornar 404
+      return res.status(404).json({ 
+        error: 'Frontend not found',
+        buildPath: frontendBuildPath 
+      });
+    }
+  } catch (err) {
+    console.error('❌ Error serving index.html:', err);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 // Middleware para rotas não encontradas
 app.use('*', notFoundHandler);
 
