@@ -24,7 +24,7 @@
     },
     {
       "src": "^/favicon.ico$",
-      "dest": "/frontend/build/favicon.ico"
+      "dest": "/frontend/build/static/media/favicon.svg"
     },
     {
       "src": "^/asset-manifest.json$",
